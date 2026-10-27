@@ -1,10 +1,8 @@
 # PLAN — 10X Shop
 
-> Commit this file in week 1, before feature code. Adjust estimates and dates to your real plan.
-
 ## Goal and scope
 
-Deliver every CORE requirement of the PRD with a working deploy, then add FULL features only if time remains and the instructor allows it.
+Deliver every CORE requirement of the PRD with a working deploy, then add FULL features only if time remains.
 
 | Module | CORE (this plan) | FULL (later, optional) |
 | --- | --- | --- |
