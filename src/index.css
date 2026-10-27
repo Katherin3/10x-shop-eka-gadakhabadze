@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Plain CSS helper (allowed by A1.7): the two typefaces loaded in index.html.
+   Everything else in the app is styled with Tailwind utility classes. */
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
