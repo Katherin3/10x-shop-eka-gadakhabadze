@@ -1,7 +1,20 @@
+import { BrowserRouter } from 'react-router';
+import ErrorBoundary from './components/ErrorBoundary';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
+import AppRoutes from './routes/AppRoutes';
+
+/** App only wires providers together — the UI lives in pages/ and components/. */
 export default function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50">
-      <h1 className="text-4xl font-extrabold text-indigo-700">10X Shop</h1>
-    </main>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
+          <CartProvider>
+            <AppRoutes />
+          </CartProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
