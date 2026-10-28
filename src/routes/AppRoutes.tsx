@@ -4,6 +4,7 @@ import CatalogPage from '../pages/CatalogPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ProductPage from '../pages/ProductPage';
 import CartPage from '../pages/CartPage';
+import LoginPage from '../pages/LoginPage';
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function AppRoutes() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="products/:id" element={<ProductPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="login" element={<LoginPage />} />
       </Route>
     </Routes>
   );
