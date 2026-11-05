@@ -44,8 +44,8 @@ Data flow: a user action calls an event handler, which updates state through `us
 ## How to Run
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/10x-shop-YOUR-NAME.git
-cd 10x-shop-YOUR-NAME
+git clone https://github.com/Katherin3/10x-shop-eka-gadakhabadze
+cd 10x-shop-eka-gadakhabadze
 npm install
 npm run dev
 ```
