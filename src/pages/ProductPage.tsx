@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { fetchProductById } from '../api/products.api';
 import DiscountBadge from '../components/product/DiscountBadge';
 import PriceTag from '../components/product/PriceTag';
@@ -23,7 +23,6 @@ type AddFeedback = { kind: 'success' | 'error'; text: string } | null;
 /** P3 — /products/:id */
 export default function ProductPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { addItem, getQuantityInCart } = useCart();
 
   const productId = Number(id);
@@ -107,13 +106,12 @@ export default function ProductPage() {
   return (
     <article className="flex flex-col gap-6">
       <div>
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className="min-h-11 rounded-lg px-1 text-sm font-medium text-indigo-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        <Link
+          to="/"
+          className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-medium text-indigo-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           ← Back to catalog
-        </button>
+        </Link>
       </div>
 
       {/* Two columns on desktop, one on mobile (P3.1) */}
