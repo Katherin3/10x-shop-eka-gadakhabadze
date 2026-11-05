@@ -43,13 +43,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return false;
     }
 
-    setItems((prev) =>
-      prev.some((item) => item.productId === product.id)
+    setItems((prev) => {
+      // Re-check against the newest state, not the items captured in this render
+
+      const current = prev.find((item) => item.productId === product.id);
+      const currentQty = current ? current.quantity : 0;
+      if (currentQty + quantity > product.stock) return prev;
+
+      return current
         ? prev.map((item) =>
             item.productId === product.id ? { ...item, quantity: item.quantity + quantity } : item,
           )
-        : [...prev, toCartItem(product, quantity)],
-    );
+        : [...prev, toCartItem(product, quantity)];
+    });
     return true;
   }
 
