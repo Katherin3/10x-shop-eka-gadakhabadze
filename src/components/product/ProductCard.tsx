@@ -12,7 +12,7 @@ interface ProductCardProps {
   onAdd: (product: Product) => boolean;
 }
 
-type Feedback = 'added' | 'limit' | null;
+type Feedback = { kind: 'added' | 'limit'; id: number } | null;
 
 export default function ProductCard({ product, onAdd }: ProductCardProps) {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
 
   function handleAdd(event: MouseEvent<HTMLButtonElement>): void {
     event.stopPropagation(); // the button must not open the details page
-    setFeedback(onAdd(product) ? 'added' : 'limit');
+    setFeedback({ kind: onAdd(product) ? 'added' : 'limit', id: Date.now() });
   }
 
   return (
@@ -82,8 +82,8 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
             {isOutOfStock ? 'Out of stock' : 'Add to cart'}
           </Button>
           <p role="status" className="min-h-5 text-center text-sm">
-            {feedback === 'added' && <span className="text-emerald-700">Added to cart ✓</span>}
-            {feedback === 'limit' && <span className="text-red-700">No more in stock</span>}
+            {feedback?.kind === 'added' && <span className="text-emerald-700">Added to cart ✓</span>}
+            {feedback?.kind === 'limit' && <span className="text-red-700">No more in stock</span>}
           </p>
         </div>
       </div>
