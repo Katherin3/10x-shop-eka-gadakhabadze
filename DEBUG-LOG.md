@@ -1,12 +1,13 @@
 # DEBUG-LOG — 10X Shop
 
-Three real bugs found while testing the deployed app and reviewing the code before submission. Each one was reproduced, traced to its root cause, and fixed in its own commit.
+Four real bugs found while testing the deployed app and reviewing the code before submission. Each one was reproduced, traced to its root cause, and fixed in its own commit.
 
 | # | Bug | Area | Fix commit |
 | --- | --- | --- | --- |
 | 1 | "← Back to catalog" does not go to the catalog | Routing | [`be274f5`](https://github.com/Katherin3/10x-shop-eka-gadakhabadze/commit/be274f50b8cd57605dad143bfb792df1fa03e0fe) |
 | 2 | "Added to cart ✓" disappears too early on a second click | useEffect / timers | [`4293122`](https://github.com/Katherin3/10x-shop-eka-gadakhabadze/commit/4293122b31df2cf31ffb1601ce504b26f0525584) |
 | 3 | Cart can hold more items than the product's stock | State updates | [`2149a37`](https://github.com/Katherin3/10x-shop-eka-gadakhabadze/commit/2149a37a9455ee8008a9e5f60d1bd7a97539d824) |
+| 4 | Horizontal scroll on the Cart page at 375px | Responsive layout | [`932c5a6`](https://github.com/Katherin3/10x-shop-eka-gadakhabadze/commit/932c5a6580c3eb6c144cb2d5f7da4852c66f5562) |
 
 ---
 
@@ -156,3 +157,47 @@ The first check (outside `setItems`) stays, because it gives the page an immedia
 - State read in a handler is a snapshot from the last render. A functional update (`setState(prev => …)`) always receives the latest state, so any rule that depends on the current state belongs inside it.
 - Returning `prev` unchanged from the updater is a clean way to say "no change".
 - Known limitation: in the double-call case the second `addItem` still returns `true`, because its return value is decided before the updater runs. The cart state can no longer go over the stock, which was the real bug; making the return value exact would need a ref holding the latest items or a `useReducer`.
+
+---
+
+## Bug 4 — Horizontal scroll on the Cart page at 375px
+
+**Symptom**
+While checking the pages at phone width, the Cart page could be scrolled sideways at 375px. The cart rows and the "Clear cart" area stuck out past the right edge of the screen. The PRD requires no horizontal scroll at 375px.
+
+**Reproduction**
+1. Add at least one product to the cart.
+2. Open Chrome DevTools → Toggle device toolbar, set the width to 375px.
+3. Open `/cart` and swipe or scroll to the right.
+4. Expected: the page fits the screen. Actual: the page is 403px wide, 28px wider than the screen.
+
+**Tool**
+Chrome DevTools device toolbar at 375px, then the Elements panel. In the Console, `document.documentElement.scrollWidth` returned `403` while `clientWidth` was `375`. Hovering the elements in the Elements panel showed that the bottom row of each cart line (quantity stepper, line total, Remove) was the widest element.
+
+**Root cause**
+Two things together:
+
+1. The bottom row of `CartItemRow` is a single `flex` line that cannot wrap. Its children need about 353px: stepper 130px + line total 96px (`w-24`) + Remove button 95px + two 16px gaps. Inside the card at 375px there is only about 309px (375px minus the page padding, the card padding and the border).
+2. The cart grid on mobile had no explicit column: `grid gap-6` without `grid-cols-*` creates an automatic column whose minimum width is its content's minimum width. So instead of squeezing the row, the grid column grew to fit the 353px row and pushed the whole page past the screen.
+
+**Fix** — [`932c5a6`](https://github.com/Katherin3/10x-shop-eka-gadakhabadze/commit/932c5a6580c3eb6c144cb2d5f7da4852c66f5562)
+- `CartItemRow.tsx`: the bottom row gets `flex-wrap` (with `gap-x-4 gap-y-2`), so on narrow screens the Remove button moves to a second line instead of overflowing.
+- `CartPage.tsx`: the grid gets `grid-cols-1`. In Tailwind this is `minmax(0, 1fr)`, so the column can never be wider than the screen, whatever its content.
+
+```diff
+-      <div className="flex items-center justify-between gap-4 sm:justify-end">
++      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 sm:justify-end">
+```
+
+```diff
+-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
++      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_20rem]">
+```
+
+After the fix, `scrollWidth` equals the screen width on `/cart` and `/checkout` at 320px, 375px, 768px and 1280px. From 640px (`sm:`) up the row still fits on one line, so the desktop layout did not change.
+
+**What I learned**
+- Responsive layout has to be checked at the real target width; the Cart page looked fine on desktop.
+- `document.documentElement.scrollWidth > clientWidth` is a quick way to prove horizontal overflow, and the Elements panel shows which element causes it.
+- A grid without explicit columns sizes them to their content. `grid-cols-1` (`minmax(0, 1fr)`) keeps a mobile column inside the screen, and `flex-wrap` lets a row break instead of overflowing.
+
