@@ -66,7 +66,7 @@ npm run dev
 
 https://10x-shop-eka-gadakhabadze.vercel.app/
 
-SPA rewrites are configured for both hosts (`vercel.json` and `public/_redirects` for Netlify), so refreshing `/products/5` works.
+SPA rewrites are configured in `vercel.json`, so refreshing `/products/5` works.
 
 ## Test Account
 
