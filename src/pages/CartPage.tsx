@@ -54,7 +54,7 @@ export default function CartPage() {
       </PageHeading>
 
       {/* List on the left, summary on the right; stacked on mobile (P4.1) */}
-      <div className="grid gap-6 lg:grid-cols-[1fr_20rem]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_20rem]">
         <div className="flex flex-col gap-3">
           <ul className="flex flex-col gap-3">
             {items.map((item) => (

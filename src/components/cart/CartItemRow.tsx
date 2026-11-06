@@ -34,7 +34,7 @@ export default function CartItemRow({ item, onQuantityChange, onRemove }: CartIt
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4 sm:justify-end">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 sm:justify-end">
         <QuantityStepper
           label={`Quantity of ${item.title}`}
           value={item.quantity}
