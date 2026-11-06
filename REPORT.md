@@ -5,7 +5,7 @@ Live: https://10x-shop-eka-gadakhabadze.vercel.app · Repository: https://github
 
 ## Planned vs delivered
 
-The plan (see `PLAN.md`) was to deliver every CORE requirement first and add FULL features only if time remained. All CORE functionality was delivered; FULL features were not started.
+The plan (see `PLAN.md`) was to deliver every CORE requirement first and add FULL features only if time remained. All CORE functionality was delivered. Most FULL features were not implemented; on the last day I added a custom Tailwind theme and two small extras (listed below).
 
 ### CORE
 
@@ -28,21 +28,35 @@ The plan (see `PLAN.md`) was to deliver every CORE requirement first and add FUL
 | Deploy on Vercel with SPA rewrites, link in README | ✅ |
 | `README.md`, `PLAN.md`, `REPORT.md` | ✅ |
 
+### Extras beyond CORE
+
+| Addition | Status | Note |
+| --- | --- | --- |
+| Custom Tailwind theme with `@theme` design tokens (TW5, FULL) | ✅ | Colors and fonts defined once in `src/index.css` (`--color-berry`, `--color-powder`, `--font-display`, …) and used as utilities (`bg-berry`, `text-ink`, `font-display`). A cosmetics-inspired look: powder-pink background, berry buttons, Bodoni Moda headings |
+| "Today’s best deal" banner on the catalog | ✅ | `getBestDeal()` in `src/utils/deals.ts` picks the in-stock product with the biggest discount (`filter` + `reduce`); shown by `FeaturedProduct.tsx`. Derived from the loaded products, no extra state |
+| Stricter login password rule | ✅ | My addition beyond P1.2: at least 6 characters plus an uppercase letter, a number and a symbol. The PRD's own error texts ("Password is required", "Password must be at least 6 characters") are kept unchanged |
+| Removed the unused Netlify `_redirects` file | ✅ | The app is deployed on Vercel; SPA rewrites live in `vercel.json` |
+
 ### FULL — not done, and why
 
-Search, categories, sorting, pagination, URL state, Orders, Profile, Reviews, Promo code, theme, Formik + Yup, lazy routes and Lighthouse targets were not implemented. The PRD rules say to finish CORE first and add FULL only afterwards; I started late and used the remaining time to finish CORE, fix the bugs found in review, and prepare to explain the code.
+Search, categories, sorting, pagination, URL state, Orders, Profile, Reviews, Promo code, dark/light theme switch, Formik + Yup, lazy routes and Lighthouse before/after comparison were not implemented. The PRD rules say to finish CORE first and add FULL only afterwards; I started late and used the remaining time to finish CORE, fix the bugs found in review, and prepare to explain the code.
 
 ## Metrics
 
 | Metric | Value |
 | --- | --- |
-| Commits | 24 (including the initial GitHub commit) |
+| Commits | 28 (including the initial GitHub commit) |
 | Days with commits | 4 (27.10, 28.10, 05.11, 06.11) |
-| Production bundle (JS, gzip) | 90.98 kB |
-| Production bundle (CSS, gzip) | 5.43 kB |
+| Production bundle (JS, gzip) | 91.37 kB |
+| Production bundle (CSS, gzip) | 5.42 kB |
 | TypeScript errors (`tsc --noEmit`) | 0 |
 | ESLint errors / warnings | 0 / 0 |
 | Bugs documented in DEBUG-LOG | 4 |
+| Lighthouse (Mobile, live site): Performance | 79 |
+| Lighthouse: Accessibility | 96 |
+| Lighthouse: Best Practices | 100 |
+| Lighthouse: SEO | 92 |
+| Lighthouse: CLS | __ |
 
 ## The 3 hardest problems
 
@@ -66,4 +80,5 @@ Full details, reproduction steps and diffs are in `DEBUG-LOG.md`, which also cov
 - I used Claude to explain my own code file by file and to prepare for the theory test and the defense.
 - Claude helped me find and fix three bugs. I reproduced each bug myself before fixing it and documented them in `DEBUG-LOG.md`. I found the fourth bug (Cart page overflow at 375px) myself while testing on a phone-sized screen.
 - I did not use AI to fake the Git history: commit dates are real, which is why the history covers only four days.
+- On the last day I used Claude to restyle the UI (cosmetics theme with `@theme`, best-deal banner) and to add the stricter password rule. I chose which ideas to keep (I rejected a gallery slider), tested each change in the browser at 375px and on desktop, and checked typecheck, lint and build before committing.
 - Main lesson: AI can produce working code quickly, but I am responsible for understanding it, so I studied every file before submitting.
