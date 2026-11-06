@@ -36,16 +36,18 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
   return (
     <article
       onClick={() => navigate(productPath)}
-      className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-shadow hover:shadow-lg hover:shadow-slate-200"
+      className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-white transition-shadow hover:shadow-lg hover:shadow-line"
     >
-      <div className="relative bg-slate-100">
+      <div className="relative bg-blush">
+        {/* The "compact": a powder disc behind the product, like an open powder case */}
+        <div aria-hidden="true" className="absolute inset-[12%] rounded-full bg-powder ring-1 ring-line" />
         <img
           src={product.thumbnail}
           alt={product.title}
           loading="lazy"
           width={300}
           height={300}
-          className="aspect-square w-full object-contain p-6"
+          className="relative aspect-square w-full object-contain p-8"
         />
         <div className="absolute left-3 top-3">
           <DiscountBadge discountPercentage={product.discountPercentage} />
@@ -53,7 +55,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <p className="text-sm text-slate-500 capitalize">
+        <p className="text-sm text-muted capitalize">
           {product.category}
           {product.brand ? `, ${product.brand}` : ''}
         </p>
@@ -62,7 +64,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
           <Link
             to={productPath}
             onClick={(event) => event.stopPropagation()}
-            className="rounded-sm text-slate-900 group-hover:text-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-sm text-ink group-hover:text-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
           >
             {product.title}
           </Link>
@@ -71,7 +73,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
         <PriceTag price={product.price} discountPercentage={product.discountPercentage} />
 
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-slate-700" aria-label={`Rating ${product.rating.toFixed(1)} out of 5`}>
+          <span className="text-sm font-medium text-ink-soft" aria-label={`Rating ${product.rating.toFixed(1)} out of 5`}>
             <span className="text-amber-500">★</span> {product.rating.toFixed(1)}
           </span>
           <StockBadge stock={product.stock} />
@@ -82,7 +84,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
             {isOutOfStock ? 'Out of stock' : 'Add to cart'}
           </Button>
           <p role="status" className="min-h-5 text-center text-sm">
-            {feedback?.kind === 'added' && <span className="text-emerald-700">Added to cart ✓</span>}
+            {feedback?.kind === 'added' && <span className="text-sage">Added to cart ✓</span>}
             {feedback?.kind === 'limit' && <span className="text-red-700">No more in stock</span>}
           </p>
         </div>

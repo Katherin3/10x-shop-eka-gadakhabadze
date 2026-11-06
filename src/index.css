@@ -1,15 +1,32 @@
 @import "tailwindcss";
 
-/* Plain CSS helper (allowed by A1.7): the two typefaces loaded in index.html.
-   Everything else in the app is styled with Tailwind utility classes. */
-body {
-  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+/* TW5 — design tokens for the "powder & lipstick" look.
+   Every token below becomes a utility automatically:
+   --color-berry -> bg-berry, text-berry, border-berry, ...
+   --font-display -> font-display. Overriding --font-sans changes the default font. */
+@theme {
+  --color-powder: #fbf1f3; /* page background: face-powder pink */
+  --color-blush: #f5e1e6; /* image tiles, hover backgrounds */
+  --color-line: #ebcfd6; /* borders */
+  --color-line-strong: #d9b3be; /* inputs, secondary buttons */
+  --color-ink: #2a1520; /* main text: deep plum-brown */
+  --color-ink-soft: #5c4450; /* secondary text */
+  --color-muted: #7d6270; /* hints, struck-through prices */
+  --color-berry: #a3123a; /* lipstick: primary buttons, links */
+  --color-berry-dark: #7e0e2d; /* hover state */
+  --color-berry-soft: #f8d9e1; /* active nav, info messages */
+  --color-sage: #3e7a55; /* discounts, "In stock", success */
+  --color-sage-soft: #e3efe6;
+
+  --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
+/* Headings use the fashion-magazine serif; body text stays in DM Sans. */
 h1,
 h2,
 h3 {
-  font-family: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+  font-family: var(--font-display);
 }
 
 @media (prefers-reduced-motion: reduce) {

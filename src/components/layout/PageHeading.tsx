@@ -9,8 +9,8 @@ interface PageHeadingProps {
 export default function PageHeading({ title, children }: PageHeadingProps) {
   return (
     <div className="mb-6 flex flex-col gap-1">
-      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{title}</h1>
-      {children && <div className="text-slate-600">{children}</div>}
+      <h1 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h1>
+      {children && <div className="text-ink-soft">{children}</div>}
     </div>
   );
 }

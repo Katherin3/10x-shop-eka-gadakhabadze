@@ -6,7 +6,7 @@ import ScrollToTop from './ScrollToTop';
 /** P0.1 — one shared layout: Header and Footer are written once, pages render in <Outlet />. */
 export default function Layout() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
+    <div className="flex min-h-screen flex-col bg-powder text-ink">
       <ScrollToTop />
       <Header />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">

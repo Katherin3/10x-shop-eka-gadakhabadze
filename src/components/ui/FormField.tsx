@@ -14,18 +14,18 @@ export default function FormField({ id, label, error, className = '', ...inputPr
   const errorId = `${id}-error`;
   const stateClasses = error
     ? 'border-red-500 focus:ring-red-200'
-    : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100';
+    : 'border-line-strong focus:border-berry focus:ring-berry-soft';
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-sm font-medium text-slate-700">
+      <label htmlFor={id} className="text-sm font-medium text-ink-soft">
         {label}
       </label>
       <input
         id={id}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
-        className={`min-h-11 rounded-lg border bg-white px-3 py-2 text-base outline-none transition focus:ring-4 ${stateClasses} ${className}`}
+        className={`min-h-11 rounded-xl border bg-white px-3 py-2 text-base outline-none transition focus:ring-4 ${stateClasses} ${className}`}
         {...inputProps}
       />
       {error && (

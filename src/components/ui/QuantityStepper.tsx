@@ -10,12 +10,12 @@ interface QuantityStepperProps {
 /** − / + control. The buttons are disabled at the edges (1 ≤ qty ≤ stock). */
 export default function QuantityStepper({ value, min, max, onChange, label, disabled = false }: QuantityStepperProps) {
   const buttonClasses =
-    'h-11 w-11 text-lg font-semibold text-slate-700 transition-colors hover:bg-slate-100 ' +
-    'focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-indigo-600 ' +
+    'h-11 w-11 text-lg font-semibold text-ink-soft transition-colors hover:bg-blush ' +
+    'focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-berry ' +
     'disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent';
 
   return (
-    <div role="group" aria-label={label} className="inline-flex items-center overflow-hidden rounded-lg border border-slate-300 bg-white">
+    <div role="group" aria-label={label} className="inline-flex items-center overflow-hidden rounded-full border border-line-strong bg-white">
       <button
         type="button"
         className={buttonClasses}

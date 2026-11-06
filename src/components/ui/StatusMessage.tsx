@@ -8,10 +8,10 @@ interface StatusMessageProps {
 }
 
 const VARIANT_CLASSES: Record<StatusVariant, string> = {
-  loading: 'border-slate-200 bg-white text-slate-600',
+  loading: 'border-line bg-white text-ink-soft',
   error: 'border-red-200 bg-red-50 text-red-800',
-  empty: 'border-dashed border-slate-300 bg-white text-slate-600',
-  info: 'border-indigo-200 bg-indigo-50 text-indigo-900',
+  empty: 'border-dashed border-line-strong bg-white text-ink-soft',
+  info: 'border-berry-soft bg-berry-soft text-berry-dark',
 };
 
 /** P0.6 — one component for every loading / error / empty message. */
@@ -24,7 +24,7 @@ export default function StatusMessage({ variant, children }: StatusMessageProps)
       {variant === 'loading' && (
         <span
           aria-hidden="true"
-          className="h-6 w-6 animate-spin rounded-full border-2 border-slate-300 border-t-indigo-700"
+          className="h-6 w-6 animate-spin rounded-full border-2 border-line-strong border-t-berry"
         />
       )}
       {children}

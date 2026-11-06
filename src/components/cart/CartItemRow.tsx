@@ -13,7 +13,7 @@ interface CartItemRowProps {
 
 export default function CartItemRow({ item, onQuantityChange, onRemove }: CartItemRowProps) {
   return (
-    <li className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center">
+    <li className="flex flex-col gap-4 rounded-xl border border-line bg-white p-4 sm:flex-row sm:items-center">
       <div className="flex flex-1 items-center gap-4">
         <img
           src={item.thumbnail}
@@ -21,16 +21,16 @@ export default function CartItemRow({ item, onQuantityChange, onRemove }: CartIt
           loading="lazy"
           width={80}
           height={80}
-          className="h-20 w-20 shrink-0 rounded-lg bg-slate-100 object-contain p-1"
+          className="h-20 w-20 shrink-0 rounded-lg bg-blush object-contain p-1"
         />
         <div className="min-w-0">
           <Link
             to={`/products/${item.productId}`}
-            className="rounded-sm font-semibold text-slate-900 hover:text-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-sm font-semibold text-ink hover:text-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
           >
             {item.title}
           </Link>
-          <p className="text-sm text-slate-500 tabular-nums">{formatPrice(getUnitPrice(item))} each</p>
+          <p className="text-sm text-muted tabular-nums">{formatPrice(getUnitPrice(item))} each</p>
         </div>
       </div>
 

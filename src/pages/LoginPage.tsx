@@ -41,10 +41,10 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="mx-auto flex w-full max-w-md flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <section className="mx-auto flex w-full max-w-md flex-col gap-6 rounded-2xl border border-line bg-white p-6 sm:p-8">
       <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-extrabold tracking-tight">Log in</h1>
-        <p className="text-slate-600">
+        <h1 className="text-3xl font-bold tracking-tight">Log in</h1>
+        <p className="text-ink-soft">
           {redirectPath === '/checkout'
             ? 'Log in to finish your order. Your cart is kept.'
             : 'Use any username and a password of at least 6 characters.'}
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
       <Link
         to="/"
-        className="self-start rounded-sm text-sm font-medium text-indigo-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="self-start rounded-sm text-sm font-medium text-berry-dark hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
       >
         ← Back to catalog
       </Link>

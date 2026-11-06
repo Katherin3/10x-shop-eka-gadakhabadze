@@ -10,23 +10,23 @@ interface OrderConfirmationProps {
 /** P5.3 — "Thank you" screen built from the local order summary. */
 export default function OrderConfirmation({ order }: OrderConfirmationProps) {
   return (
-    <section className="mx-auto flex max-w-xl flex-col gap-6 rounded-2xl border border-emerald-200 bg-white p-6 sm:p-8">
+    <section className="mx-auto flex max-w-xl flex-col gap-6 rounded-2xl border border-sage-soft bg-white p-6 sm:p-8">
       <div className="flex flex-col gap-2" role="status">
-        <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-700">
+        <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-full bg-sage-soft text-2xl text-sage">
           ✓
         </span>
-        <h1 className="text-3xl font-extrabold tracking-tight">Thank you! Your order has been placed.</h1>
-        <p className="text-slate-600">
+        <h1 className="text-3xl font-bold tracking-tight">Thank you! Your order has been placed.</h1>
+        <p className="text-ink-soft">
           We’ll ship {order.itemCount} {order.itemCount === 1 ? 'item' : 'items'} to {order.shipping.fullName},{' '}
           {order.shipping.address}, {order.shipping.city}. A confirmation goes to {order.shipping.email}.
         </p>
       </div>
 
-      <ul className="flex flex-col divide-y divide-slate-100 rounded-xl border border-slate-200">
+      <ul className="flex flex-col divide-y divide-line rounded-xl border border-line">
         {order.items.map((item) => (
           <li key={item.productId} className="flex items-center justify-between gap-4 px-4 py-3 text-sm">
             <span>
-              {item.title} <span className="text-slate-500">× {item.quantity}</span>
+              {item.title} <span className="text-muted">× {item.quantity}</span>
             </span>
             <span className="font-semibold tabular-nums">{formatPrice(getLineTotal(item))}</span>
           </li>
@@ -40,7 +40,7 @@ export default function OrderConfirmation({ order }: OrderConfirmationProps) {
 
       <Link
         to="/"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg bg-indigo-700 px-4 font-semibold text-white transition-colors hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="inline-flex min-h-11 items-center justify-center rounded-full bg-berry px-4 font-semibold text-white transition-colors hover:bg-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
       >
         Continue shopping
       </Link>

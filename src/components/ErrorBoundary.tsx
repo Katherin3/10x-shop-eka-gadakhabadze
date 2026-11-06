@@ -27,13 +27,13 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div role="alert" className="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-50 p-6 text-center">
-          <h1 className="text-2xl font-extrabold text-slate-900">Something went wrong.</h1>
-          <p className="text-slate-600">Reload the page to continue shopping. Your cart is saved.</p>
+        <div role="alert" className="flex min-h-screen flex-col items-center justify-center gap-4 bg-powder p-6 text-center">
+          <h1 className="text-2xl font-bold text-ink">Something went wrong.</h1>
+          <p className="text-ink-soft">Reload the page to continue shopping. Your cart is saved.</p>
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="min-h-11 rounded-lg bg-indigo-700 px-5 font-semibold text-white hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="min-h-11 rounded-full bg-berry px-5 font-semibold text-white hover:bg-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
           >
             Reload
           </button>

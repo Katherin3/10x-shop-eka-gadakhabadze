@@ -33,10 +33,10 @@ export default function CartPage() {
         <PageHeading title="Cart" />
         {redirectMessage && <StatusMessage variant="info">{redirectMessage}</StatusMessage>}
         <StatusMessage variant="empty">
-          <p className="text-lg font-semibold text-slate-800">Your cart is empty.</p>
+          <p className="text-lg font-semibold text-ink">Your cart is empty.</p>
           <Link
             to="/"
-            className="inline-flex min-h-11 items-center rounded-lg bg-indigo-700 px-4 font-semibold text-white hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex min-h-11 items-center rounded-full bg-berry px-4 font-semibold text-white hover:bg-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
           >
             Browse products
           </Link>

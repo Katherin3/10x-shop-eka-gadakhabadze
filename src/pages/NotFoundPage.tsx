@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 export default function NotFoundPage() {
   return (
     <section className="mx-auto flex max-w-lg flex-col items-center gap-4 py-16 text-center">
-      <p className="font-['Bricolage_Grotesque',sans-serif] text-7xl font-extrabold text-indigo-200" aria-hidden="true">
+      <p className="font-display text-7xl font-bold text-berry-soft" aria-hidden="true">
         404
       </p>
-      <h1 className="text-3xl font-extrabold tracking-tight">Page not found</h1>
-      <p className="text-slate-600">The page you are looking for does not exist.</p>
+      <h1 className="text-3xl font-bold tracking-tight">Page not found</h1>
+      <p className="text-ink-soft">The page you are looking for does not exist.</p>
       <Link
         to="/"
-        className="inline-flex min-h-11 items-center rounded-lg bg-indigo-700 px-4 font-semibold text-white hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="inline-flex min-h-11 items-center rounded-full bg-berry px-4 font-semibold text-white hover:bg-berry-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
       >
         Go to catalog
       </Link>

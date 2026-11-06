@@ -1,7 +1,7 @@
 import { getStockLabel, getStockLevel, type StockLevel } from '../../utils/stock';
 
 const LEVEL_CLASSES: Record<StockLevel, string> = {
-  'in-stock': 'text-emerald-700',
+  'in-stock': 'text-sage',
   low: 'text-orange-600',
   out: 'text-red-700',
 };

@@ -108,7 +108,7 @@ export default function ProductPage() {
       <div>
         <Link
           to="/"
-          className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-medium text-indigo-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-medium text-berry-dark hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry"
         >
           ← Back to catalog
         </Link>
@@ -117,13 +117,14 @@ export default function ProductPage() {
       {/* Two columns on desktop, one on mobile (P3.1) */}
       <div className="grid gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-3">
-          <div className="relative rounded-2xl border border-slate-200 bg-white">
+          <div className="relative rounded-2xl border border-line bg-blush">
+            <div aria-hidden="true" className="absolute inset-[10%] rounded-full bg-powder ring-1 ring-line" />
             <img
               src={mainImage}
               alt={product.title}
               width={600}
               height={600}
-              className="aspect-square w-full object-contain p-6"
+              className="relative aspect-square w-full object-contain p-10"
             />
             <div className="absolute left-4 top-4">
               <DiscountBadge discountPercentage={product.discountPercentage} />
@@ -139,8 +140,8 @@ export default function ProductPage() {
                     onClick={() => setSelectedImage(index)}
                     aria-label={`Show photo ${index + 1}`}
                     aria-pressed={index === selectedImage}
-                    className={`h-16 w-16 overflow-hidden rounded-lg border-2 bg-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
-                      index === selectedImage ? 'border-indigo-700' : 'border-slate-200 hover:border-slate-400'
+                    className={`h-16 w-16 overflow-hidden rounded-lg border-2 bg-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-berry ${
+                      index === selectedImage ? 'border-berry' : 'border-line hover:border-berry'
                     }`}
                   >
                     <img src={image} alt="" loading="lazy" width={64} height={64} className="h-full w-full object-contain p-1" />
@@ -153,25 +154,25 @@ export default function ProductPage() {
 
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-sm text-slate-500 capitalize">
+            <p className="text-sm text-muted capitalize">
               {product.brand ? `${product.brand}, ` : ''}
               {product.category}
             </p>
-            <h1 className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">{product.title}</h1>
+            <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{product.title}</h1>
           </div>
 
           <PriceTag price={product.price} discountPercentage={product.discountPercentage} size="lg" />
 
           <div className="flex flex-wrap items-center gap-4">
-            <span className="font-medium text-slate-700">
+            <span className="font-medium text-ink-soft">
               <span className="text-amber-500">★</span> {product.rating.toFixed(1)}
             </span>
             <StockBadge stock={product.stock} />
           </div>
 
-          <p className="max-w-prose leading-relaxed text-slate-700">{product.description}</p>
+          <p className="max-w-prose leading-relaxed text-ink-soft">{product.description}</p>
 
-          <div className="flex flex-col gap-3 border-t border-slate-200 pt-4 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center">
             <QuantityStepper
               label="Quantity"
               value={quantity}
@@ -186,7 +187,7 @@ export default function ProductPage() {
           </div>
 
           {feedback && (
-            <p role="status" className={`text-sm font-medium ${feedback.kind === 'success' ? 'text-emerald-700' : 'text-red-700'}`}>
+            <p role="status" className={`text-sm font-medium ${feedback.kind === 'success' ? 'text-sage' : 'text-red-700'}`}>
               {feedback.text}
             </p>
           )}

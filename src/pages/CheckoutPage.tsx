@@ -79,7 +79,7 @@ export default function CheckoutPage() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
+          className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-5 sm:p-6"
         >
           <h2 className="text-xl font-bold">Shipping details</h2>
           <FormField
@@ -121,11 +121,11 @@ export default function CheckoutPage() {
         </form>
 
         <CartSummary itemCount={itemCount} total={total}>
-          <ul className="flex flex-col gap-2 border-t border-slate-200 pt-3 text-sm">
+          <ul className="flex flex-col gap-2 border-t border-line pt-3 text-sm">
             {items.map((item) => (
               <li key={item.productId} className="flex justify-between gap-3">
-                <span className="text-slate-700">{item.title}</span>
-                <span className="shrink-0 text-slate-500">× {item.quantity}</span>
+                <span className="text-ink-soft">{item.title}</span>
+                <span className="shrink-0 text-muted">× {item.quantity}</span>
               </li>
             ))}
           </ul>
