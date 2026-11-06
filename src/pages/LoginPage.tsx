@@ -47,7 +47,7 @@ export default function LoginPage() {
         <p className="text-ink-soft">
           {redirectPath === '/checkout'
             ? 'Log in to finish your order. Your cart is kept.'
-            : 'Use any username and a password of at least 6 characters.'}
+            : 'Use any username. The password needs at least 6 characters, one uppercase letter, one number and one symbol.'}
         </p>
       </div>
 

@@ -70,7 +70,7 @@ SPA rewrites are configured for both hosts (`vercel.json` and `public/_redirects
 
 ## Test Account
 
-Login is simulated. Use any username and any password of at least 6 characters, for example:
+Login is simulated. Use any username. The password needs at least 6 characters, one uppercase letter, one number and one symbol, for example:
 
 - **Username:** `ekaterine`
 - **Password:** `Password1!`
