@@ -64,6 +64,6 @@ Full details, reproduction steps and diffs are in `DEBUG-LOG.md`, which also cov
 - I used Claude (Anthropic) throughout the project, which the PRD allows.
 - Claude generated the base code from the PRD's CORE requirements. I added it to the repository in stages, ran each stage locally, and checked typecheck, lint and build before every commit.
 - I used Claude to explain my own code file by file and to prepare for the theory test and the defense.
-- After the lecturer's review, Claude helped me find and fix three bugs. I reproduced each bug myself before fixing it and documented them in `DEBUG-LOG.md`. I found the fourth bug (Cart page overflow at 375px) myself while testing on a phone-sized screen.
+- Claude helped me find and fix three bugs. I reproduced each bug myself before fixing it and documented them in `DEBUG-LOG.md`. I found the fourth bug (Cart page overflow at 375px) myself while testing on a phone-sized screen.
 - I did not use AI to fake the Git history: commit dates are real, which is why the history covers only four days.
 - Main lesson: AI can produce working code quickly, but I am responsible for understanding it, so I studied every file before submitting.
