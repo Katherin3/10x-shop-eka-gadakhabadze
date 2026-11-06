@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../api/products.api';
 import PageHeading from '../components/layout/PageHeading';
+import FeaturedProduct from '../components/product/FeaturedProduct';
 import ProductGrid from '../components/product/ProductGrid';
 import StatusMessage from '../components/ui/StatusMessage';
 import { useCart } from '../context/CartContext';
 import type { Product } from '../types/product';
+import { getBestDeal } from '../utils/deals';
 
 type LoadStatus = 'loading' | 'success' | 'error';
 
@@ -39,6 +41,9 @@ export default function CatalogPage() {
     };
   }, []); // empty deps: load once, when the page mounts
 
+  // Derived from the loaded products during render — no extra state needed.
+  const bestDeal = getBestDeal(products);
+
   function handleAdd(product: Product): boolean {
     return addItem(product, 1);
   }
@@ -65,6 +70,8 @@ export default function CatalogPage() {
       {status === 'success' && products.length === 0 && (
         <StatusMessage variant="empty">No products found.</StatusMessage>
       )}
+
+      {status === 'success' && bestDeal !== null && <FeaturedProduct product={bestDeal} />}
 
       {status === 'success' && products.length > 0 && <ProductGrid products={products} onAdd={handleAdd} />}
     </section>
