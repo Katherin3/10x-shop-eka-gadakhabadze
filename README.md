@@ -1,5 +1,7 @@
 # 10x-shop-eka-gadakhabadze
 
+## About
+
 An online store SPA built with React, TypeScript and Tailwind CSS v4 as the final project of the 10X Front-end course. Products come from the DummyJSON API; login and checkout are local simulations (no real authentication or payment).
 
 ## Features (CORE)
