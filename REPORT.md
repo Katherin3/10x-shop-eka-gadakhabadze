@@ -45,7 +45,7 @@ Search, categories, sorting, pagination, URL state, Orders, Profile, Reviews, Pr
 
 | Metric | Value |
 | --- | --- |
-| Commits | 28 (including the initial GitHub commit) |
+| Commits | 29 (including the initial GitHub commit) |
 | Days with commits | 4 (27.10, 28.10, 05.11, 06.11) |
 | Production bundle (JS, gzip) | 91.37 kB |
 | Production bundle (CSS, gzip) | 5.42 kB |
@@ -56,7 +56,7 @@ Search, categories, sorting, pagination, URL state, Orders, Profile, Reviews, Pr
 | Lighthouse: Accessibility | 96 |
 | Lighthouse: Best Practices | 100 |
 | Lighthouse: SEO | 92 |
-| Lighthouse: CLS | __ |
+| Lighthouse: CLS | 0.209 |
 
 ## The 3 hardest problems
 
@@ -80,5 +80,5 @@ Full details, reproduction steps and diffs are in `DEBUG-LOG.md`, which also cov
 - I used Claude to explain my own code file by file and to prepare for the theory test and the defense.
 - Claude helped me find and fix three bugs. I reproduced each bug myself before fixing it and documented them in `DEBUG-LOG.md`. I found the fourth bug (Cart page overflow at 375px) myself while testing on a phone-sized screen.
 - I did not use AI to fake the Git history: commit dates are real, which is why the history covers only four days.
-- On the last day I used Claude to restyle the UI (cosmetics theme with `@theme`, best-deal banner) and to add the stricter password rule. I chose which ideas to keep (I rejected a gallery slider), tested each change in the browser at 375px and on desktop, and checked typecheck, lint and build before committing.
+- On the last day I used Claude to restyle the UI (cosmetics theme with `@theme`, best-deal banner) and to add the stricter password rule.Tested each change in the browser at 375px and on desktop, and checked typecheck, lint and build before committing.
 - Main lesson: AI can produce working code quickly, but I am responsible for understanding it, so I studied every file before submitting.
